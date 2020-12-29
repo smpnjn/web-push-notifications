@@ -3,7 +3,7 @@ var isDomReady = function(callback) {
 };
 
 isDomReady(function(e) {
-    const publicVapidKey = '<<<Public Vapid Key>>>';
+    const publicVapidKey = '<<<Public Key>>>';
     document.getElementById('subscribe').addEventListener('click', async function(e) {
         const registration = await navigator.serviceWorker.register('worker.js', {scope: '/'});
         const subscription = await registration.pushManager.subscribe({

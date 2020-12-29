@@ -40,10 +40,10 @@ app.use(express.static('./views'));
 // Generate your own vapid keys by running: 
     // npm i web-push -g 
     // web-push generate-vapid-keys
-const publicVapidKey = '<<<Public Vapid Key>>>';
-const privateVapidKey = '<<<Private Vapid Key>>>';
+const publicVapidKey = '<<Public Key>>';
+const privateVapidKey = '<<Private Key>>';
 
-webpush.setVapidDetails('mailto:mail@fjolt.com', publicVapidKey, privateVapidKey);
+webpush.setVapidDetails('mailto:mail@someEmail.com', publicVapidKey, privateVapidKey);
 
 app.post('/subscribe', jsonParser, async function(req, res) {
     try {
@@ -100,8 +100,8 @@ app.get('/send-notification', jsonParser, async function(req, res) {
             webpush.sendNotification(item.subscriptionEl, theMessage).catch(error => {
                 console.error(error.stack);
             });
-            res.status(200).json({"message" : "notification sent"});
         });
+        res.status(200).json({"message" : "notification sent"});
     } catch(e) {
         console.log(e);
     }
